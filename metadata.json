@@ -1,0 +1,6 @@
+{
+  "name": "Souly - AI Agents Platform",
+  "description": "An interactive, animated dark-style showcase platform with neon and glass effects for Souly (SoulyEG.online), dynamic specialists in next-generation AI Agents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
