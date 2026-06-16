@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    # Set this to the directory where your cPanel Node.js app is hosted,
+    # or public_html if you are exporting a static site.
+    - export DEPLOYPATH=/home/soulehxy/soulysite_app
+    - /bin/cp -R * $DEPLOYPATH/
