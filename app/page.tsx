@@ -26,6 +26,9 @@ import CyberCanvas from "./components/CyberCanvas";
 import WorkforceSimulation from "./components/WorkforceSimulation";
 import BoardSimulation from "./components/BoardSimulation";
 import ArenaSimulation from "./components/ArenaSimulation";
+import FloatingTelemetry from "./components/FloatingTelemetry";
+import BentoGrid from "./components/BentoGrid";
+import AssetCreator from "./components/AssetCreator";
 
 // Types for Chat
 interface ChatMessage {
@@ -268,7 +271,7 @@ export default function Home() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [systemLogs, setSystemLogs] = useState<{ time: string; index: number }[]>([]);
   const [currentLogIndex, setCurrentLogIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<"playground" | "swarm" | "workforce" | "board" | "arena" | "evolution" | "portal">("workforce");
+  const [activeTab, setActiveTab] = useState<"playground" | "swarm" | "workforce" | "board" | "arena" | "evolution" | "metrics" | "portal">("workforce");
   
   // Selection
   const [selectedAgentId, setSelectedAgentId] = useState("synthetix");
@@ -479,6 +482,7 @@ export default function Home() {
       {/* Visual Overlay: Glass Noise Texture simulation */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-amber-50 mix-blend-overlay" />
       <CyberCanvas lang={lang as "eg" | "en"} />
+      <FloatingTelemetry lang={lang as "eg" | "en"} />
 
       <AnimatePresence mode="wait">
         {/* Loading / Boot System */}
@@ -686,6 +690,17 @@ export default function Home() {
                     }`}
                   >
                     {t.evolutionTab}
+                  </button>
+                  <button
+                    id="tab-metrics"
+                    onClick={() => setActiveTab("metrics")}
+                    className={`px-4 py-2 rounded-lg font-display text-xs font-semibold tracking-wide transition-all ${
+                      activeTab === "metrics"
+                        ? "bg-indigo-500 text-black shadow-md shadow-indigo-500/20"
+                        : "text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    {lang === "eg" ? "بيانات حية" : "METRICS"}
                   </button>
                   <button
                     id="tab-portal"
@@ -1223,6 +1238,19 @@ export default function Home() {
                   </motion.div>
                 )}
 
+                {activeTab === "metrics" && (
+                  <motion.div
+                    key="metrics-panel"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-full flex flex-col"
+                  >
+                    <BentoGrid lang={lang as "eg" | "en"} />
+                  </motion.div>
+                )}
+
                 {/* 3. TECH EVOLUTION TIMELINE */}
                 {activeTab === "evolution" && (
                   <motion.div
@@ -1435,6 +1463,10 @@ export default function Home() {
                         )}
                       </AnimatePresence>
 
+                    </div>
+
+                    <div className="mt-8">
+                      <AssetCreator lang={lang as "eg" | "en"} />
                     </div>
                   </motion.div>
                 )}
