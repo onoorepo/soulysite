@@ -29,6 +29,7 @@ import ArenaSimulation from "./components/ArenaSimulation";
 import FloatingTelemetry from "./components/FloatingTelemetry";
 import BentoGrid from "./components/BentoGrid";
 import AssetCreator from "./components/AssetCreator";
+import CustomerInteraction from "./components/CustomerInteraction";
 
 // Types for Chat
 interface ChatMessage {
@@ -271,7 +272,7 @@ export default function Home() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [systemLogs, setSystemLogs] = useState<{ time: string; index: number }[]>([]);
   const [currentLogIndex, setCurrentLogIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<"playground" | "swarm" | "workforce" | "board" | "arena" | "evolution" | "metrics" | "portal">("workforce");
+  const [activeTab, setActiveTab] = useState<"playground" | "swarm" | "workforce" | "interaction" | "board" | "arena" | "evolution" | "metrics" | "portal">("interaction");
   
   // Selection
   const [selectedAgentId, setSelectedAgentId] = useState("synthetix");
@@ -657,6 +658,17 @@ export default function Home() {
                     }`}
                   >
                     {t.workforceTab}
+                  </button>
+                  <button
+                    id="tab-interaction"
+                    onClick={() => setActiveTab("interaction")}
+                    className={`px-4 py-2 rounded-lg font-display text-xs font-semibold tracking-wide transition-all ${
+                      activeTab === "interaction"
+                        ? "bg-indigo-500 text-black shadow-md shadow-indigo-500/20"
+                        : "text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    {lang === "eg" ? "محاكاة العملاء" : "INTERACTION"}
                   </button>
                   <button
                     id="tab-board"
@@ -1209,6 +1221,19 @@ export default function Home() {
                     className="h-full flex flex-col"
                   >
                     <WorkforceSimulation lang={lang as "eg" | "en"} />
+                  </motion.div>
+                )}
+
+                {activeTab === "interaction" && (
+                  <motion.div
+                    key="interaction-panel"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-full flex flex-col"
+                  >
+                    <CustomerInteraction lang={lang as "eg" | "en"} />
                   </motion.div>
                 )}
 

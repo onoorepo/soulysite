@@ -12,25 +12,43 @@ export default function ArenaSimulation({ lang }: { lang: "en" | "eg" }) {
       side: "center",
       title: lang === "eg" ? "صراع الأهداف (Alignment Debate)" : "Alignment Debate",
       leftBar: 50, rightBar: 50,
-      log: lang === "eg" ? "[النظام] رصد تعارض في تخصيص ميزانية الحملة الجديدة." : "[SYSTEM] Detected budget allocation conflict for new campaign."
+      log: lang === "eg" ? "[النظام] رصد تعارض في تخصيص ميزانية الحملة الجديدة بقيمة 500ألف دولار." : "[SYSTEM] Detected budget allocation conflict for $500K new campaign."
     },
     {
       side: "left",
       title: "AXIOM NODE",
       leftBar: 80, rightBar: 20,
-      log: lang === "eg" ? "Axiom: ميزانية التسويق يجب أن تذهب للعملاء القدامى (ROI مؤكد 40%)." : "Axiom: Capital must be diverted to retention. (Proven 40% ROI)."
+      log: lang === "eg" ? "Axiom: ميزانية التسويق يجب أن تذهب للعملاء القدامى (ROI مؤكد 40%). المخاطرة بـ 500ألف لاستحواذ جديد غير مبررة الآن." : "Axiom: Capital must be diverted to retention. (Proven 40% ROI). Risking $500K on net-new acquisition is statistically unsound."
     },
     {
       side: "right",
       title: "HESPERIA NODE",
       leftBar: 30, rightBar: 70,
-      log: lang === "eg" ? "Hesperia: لا، الإبداع يتطلب المخاطرة. الاستحواذ على عملاء جدد سيبني الـ Brand Awareness." : "Hesperia: Disagree. Creative growth requires risk. New acquisition builds total addressable market."
+      log: lang === "eg" ? "Hesperia: لا، الإبداع يتطلب المخاطرة. الاستحواذ على عملاء جدد سيبني الـ Brand Awareness. البقاء في الآمان سيؤدي لانكماش السوق بنسبة 12% سنويا." : "Hesperia: Disagree. Creative growth requires risk. New acquisition builds TAM. Playing it safe guarantees 12% YoY market shadow-shrinkage."
+    },
+    {
+      side: "center",
+      title: lang === "eg" ? "[SYNTHETIX] تحليل البيانات اللحظية" : "[SYNTHETIX] Real-time Analysis",
+      leftBar: 50, rightBar: 50,
+      log: lang === "eg" ? "[Synthetix] محاكاة كلا الخيارين... خيار Axiom ينقصه النمو على المدى الطويل. خيار Hesperia يحمل معدل حرق (Burn Rate) مرتفع." : "[Synthetix] Simulating both branches... Axiom limits long-term survivability. Hesperia introduces high burn rate."
+    },
+    {
+      side: "left",
+      title: "AXIOM NODE",
+      leftBar: 75, rightBar: 25,
+      log: lang === "eg" ? "Axiom: إذاً نقوم بتخفيض الميزانية لـ 200ألف دولار وتوجيهها بالكامل لحملات الـ Retargeting المبنية على البيانات." : "Axiom: Then we reduce budget to $200K and route entirely to data-driven retargeting campaigns."
+    },
+    {
+      side: "right",
+      title: "HESPERIA NODE",
+      leftBar: 35, rightBar: 65,
+      log: lang === "eg" ? "Hesperia: 200ألف لا تكفي للوصول للـ Viral Threshold. نحتاج 350ألف على الأقل لصناعة تأثير ملموس وجذب فئة الشباب." : "Hesperia: $200K is below the viral threshold. I require minimum $350K to penetrate the Gen-Z demographic barrier."
     },
     {
       side: "center",
       title: lang === "eg" ? "حل النزاع التلقائي (Consensus)" : "Automated Consensus",
       leftBar: 55, rightBar: 45,
-      log: lang === "eg" ? "[Synthetix] تسوية محتومة: 55% لاستهداف القدامى + 45% لحملات الاستحواذ الإبداعية. جاري النشر." : "[Synthetix] Resolution: 55% retention vector + 45% creative acquisition. Deploying."
+      log: lang === "eg" ? "[Synthetix] تسوية محتومة: 275ألف لاستهداف القدامى + 225ألف لحملات الاستحواذ الإبداعية الموجهة. جاري النشر والتنفيذ فوراً." : "[Synthetix] Resolution: $275K retention vector + $225K targeted creative acquisition. Deploying smart contracts."
     }
   ];
 

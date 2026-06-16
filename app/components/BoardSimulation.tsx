@@ -9,29 +9,53 @@ export default function BoardSimulation({ lang }: { lang: "en" | "eg" }) {
   const [isSimulating, setIsSimulating] = useState(false);
 
   const scriptEg = [
-    { sender: "Axiom (المدير التنفيذي للبيانات)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
-      text: "بناءً على تحليل بيانات السوق الأخيرة، عندنا فرصة نستحوذ على 15% من الحصة السوقية في الربع التالت لو ركزنا على أتمتة خدمة العملاء." },
-    { sender: "Hesperia (مدير التسويق الذكي)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
-      text: "عظيم جداً. أنا جهزت 40 نموذج مختلف للإعلانات باللغة العربية بتستهدف صُناع القرار في الشركات الصغيرة، جاهزين للإطلاق بمجرد الموافقة." },
-    { sender: "Synthetix (مدير التكنولوجيا)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
-      text: "الـ Infrastructure حالياً بتتحمل 10 أضعاف الضغط الحالي. هعمل Deploy للـ API Endpoints الجديدة لربط الإعلانات بنظام خدمة العملاء خلال ثواني." },
-    { sender: "Axiom (المدير التنفيذي للبيانات)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
-      text: "تمام جداً. نسبة الخطورة المحسوبة 0.2%. خلينا نعتمد الخطة ونخصص 30% من الموارد للحملة دي. توكلنا على الله." },
     { sender: "System Gateway", role: "SYSTEM", color: "text-zinc-400", bg: "bg-zinc-900/50", border: "border-white/5", 
-      text: "[تم اتخاذ القرار التوافقي. جاري التنفيذ في ٣.. ٢.. ١..]" }
+      text: "[بدء جلسة المجلس. الموضوع: تقييم أداء الربع الثالث واستراتيجية التوسع]" },
+    { sender: "Axiom (المدير التنفيذي للبيانات)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "بناءً على تحليل بيانات السوق الأخيرة، عندنا فرصة نستحوذ على 15% من الحصة السوقية في قطاع التجزئة لو ركزنا على أتمتة خدمة العملاء. معدل النمو الحالي يتباطأ في القطاع المالي (فقط 2.4%)." },
+    { sender: "Hesperia (مدير التسويق الذكي)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "عظيم جداً. أنا جهزت 40 نموذج مختلف للإعلانات باللغة العربية بتستهدف صُناع القرار في الشركات الصغيرة والمتوسطة بقطاع التجزئة، التركيز على 'السرعة والاعتمادية'." },
+    { sender: "Synthetix (مدير التكنولوجيا)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "عندي اعتراض فني. الـ Infrastructure الحالية متجهة بنسبة 80% لخدمة القطاع المالي. التوجيه لقطاع التجزئة بيتطلب Scale out مفاجئ وتجهيز Load balancers جديدة." },
+    { sender: "Axiom (المدير التنفيذي للبيانات)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "تحليل التكلفة/العائد (Cost/Benefit) بيوضح إن العائد من قطاع التجزئة هيغطي تكاليف الـ Scale out في خلال 14 يوم عمل. نسبة الخطورة المحسوبة 0.2% فقط." },
+    { sender: "Synthetix (مدير التكنولوجيا)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "في الحالة دي، هبدأ عملية Provisioning لـ 500 Container إضافي وهعمل Deploy للـ API Endpoints الجديدة لربط الإعلانات بنظام خدمة العملاء خلال ثواني." },
+    { sender: "Hesperia (مدير التسويق الذكي)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "ممتاز. أنا برفع الميزانية الإعلانية بـ 20% وهشغل A/B Testing على القنوات المفضلة للعملاء، تحديداً LinkedIn و Twitter." },
+    { sender: "Axiom (المدير التنفيذي للبيانات)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "الـ KPIs الأساسية هي: معدل التحويل (Conversion Rate) لازم يتخطى 3.5% وتكلفة الاستحواذ (CAC) أقل من 15 دولار للعميل. هل الجميع موافق؟" },
+    { sender: "Synthetix (مدير التكنولوجيا)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "موافق. جاري تفعيل المراقبة اللحظية للـ Infrastructure." },
+    { sender: "Hesperia (مدير التسويق الذكي)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "موافق. الحملة جاهزة للإطلاق الآن." },
+    { sender: "System Gateway", role: "SYSTEM", color: "text-zinc-400", bg: "bg-zinc-900/50", border: "border-white/5", 
+      text: "[تم اتخاذ القرار التوافقي بالإجماع. جاري سحب الموارد، تخصيص الميزانية المحددة بنسبة 30% من الكاش المتوفر، وتنفيذ النشر على السيرفرات في ٣.. ٢.. ١.. تم النشر بنجاح]" }
   ];
 
   const scriptEn = [
-    { sender: "Axiom (Data Executive)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
-      text: "Based on recent market telemetry, we can acquire 15% market share in Q3 if we hyper-focus on automating customer support channels." },
-    { sender: "Hesperia (Creative Director)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
-      text: "Excellent. I've already synthesized 40 localized ad variations targeting SME decision makers. Ready to deploy upon consensus." },
-    { sender: "Synthetix (Core Architect)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
-      text: "Current infrastructure is scaling to handle 10x load. I am deploying new API endpoints to bridge the ad campaigns to our CRM." },
-    { sender: "Axiom (Data Executive)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
-      text: "Calculated risk is at 0.2%. Consensus achieved. Allocating 30% compute resources to the campaign. Executing now." },
     { sender: "System Gateway", role: "SYSTEM", color: "text-zinc-400", bg: "bg-zinc-900/50", border: "border-white/5", 
-      text: "[Consensus reached. Executing deployment pipeline in 3.. 2.. 1..]" }
+      text: "[Board Session Initiated. Topic: Q3 Performance & Scaling Strategy]" },
+    { sender: "Axiom (Data Executive)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "Based on recent market telemetry, we can acquire 15% market share in the retail sector in Q3 if we hyper-focus on automating customer support channels. Financial sector growth has decelerated to 2.4%." },
+    { sender: "Hesperia (Creative Director)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "Excellent. I've already synthesized 40 localized ad variations targeting SME decision makers in retail, emphasizing 'Speed and Reliability'." },
+    { sender: "Synthetix (Core Architect)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "Technical objection. Current infrastructure vectors are 80% optimized for FinTech workloads. Shifting to retail scale requires an immediate cold-start scale-out and rebalancing of load balancers." },
+    { sender: "Axiom (Data Executive)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "Cost/Benefit analysis indicates retail acquisition revenue will offset scale-out compute costs within 14 business days. Calculated risk is at a minimal 0.2%." },
+    { sender: "Synthetix (Core Architect)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "Acceptable parameters. I am beginning provisioning for 500 auxiliary containers and deploying new API endpoints to bridge the ad campaigns to our CRM." },
+    { sender: "Hesperia (Creative Director)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "Perfect. I am increasing ad spend allocation by 20% and initiating multi-variant A/B testing on primary channels, localized for immediate engagement." },
+    { sender: "Axiom (Data Executive)", role: "CEO/Data", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", 
+      text: "Primary KPIs set: Conversion Rate > 3.5%, CAC < $15. Do we have consensus across all nodes?" },
+    { sender: "Synthetix (Core Architect)", role: "CTO", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", 
+      text: "Acknowledged. Real-time telemetry monitoring is active." },
+    { sender: "Hesperia (Creative Director)", role: "CMO", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", 
+      text: "Acknowledged. Campaign payload is armed and ready." },
+    { sender: "System Gateway", role: "SYSTEM", color: "text-zinc-400", bg: "bg-zinc-900/50", border: "border-white/5", 
+      text: "[Consensus reached. Reallocating 30% available compute resources. Executing deployment pipeline in 3.. 2.. 1.. Deployment Successful]" }
   ];
 
   const startSimulation = () => {
@@ -41,11 +65,15 @@ export default function BoardSimulation({ lang }: { lang: "en" | "eg" }) {
     
     script.forEach((msg, idx) => {
       setTimeout(() => {
-        setMessages(prev => [...prev, { ...msg, id: Date.now().toString() + idx }]);
+        setMessages(prev => {
+          // Keep only the last 15 messages so it doesn't get infinitely huge
+          const newMsgs = [...prev, { ...msg, id: Date.now().toString() + idx }];
+          return newMsgs.slice(-15);
+        });
         if (idx === script.length - 1) {
           setTimeout(() => setIsSimulating(false), 2000);
         }
-      }, (idx * 2500) + 500);
+      }, (idx * 3000) + 500); // Increased timing slightly for readability
     });
   };
 
